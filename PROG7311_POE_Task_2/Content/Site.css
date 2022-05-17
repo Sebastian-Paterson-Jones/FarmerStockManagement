@@ -18,6 +18,26 @@ textarea {
     max-width: 280px;
 }
 
+.container {
+    padding: 10rem 5rem;
+    border: 0.5rem solid #eeeeee;
+    background: #f7f7f7;
+    border-radius: 0.5rem;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-container-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+flex-container.centered, flex-container-vertical.centered {
+    justify-content: center;
+    align-items: center;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
