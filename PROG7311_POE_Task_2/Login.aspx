@@ -15,8 +15,9 @@
 </head>
 <body class="flex-container centered">
     <div class="container login">
-        <form id="form1" runat="server">
+        <form id="login_form" runat="server">
             <div>
+
             </div>
         </form>
     </div>
