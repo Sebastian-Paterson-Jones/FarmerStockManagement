@@ -39,6 +39,23 @@ flex-container.centered, flex-container-vertical.centered {
     align-items: center;
 }
 
+flex-container.spaced-around {
+    justify-content: space-around;
+}
+
+flex-container-vertical.spaced-around {
+    align-content: space-around;
+} 
+
+flex-container.horizontal-center {
+    justify-content: center;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .jumbotron {
