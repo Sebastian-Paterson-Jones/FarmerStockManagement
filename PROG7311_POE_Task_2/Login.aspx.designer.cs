@@ -15,13 +15,13 @@ namespace PROG7311_POE_Task_2
     {
 
         /// <summary>
-        /// message control.
+        /// errorMessageBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label message;
+        protected global::System.Web.UI.WebControls.Label errorMessageBox;
 
         /// <summary>
         /// login control.
@@ -60,13 +60,13 @@ namespace PROG7311_POE_Task_2
         protected global::System.Web.UI.WebControls.TextBox UserPassword;
 
         /// <summary>
-        /// RequiredFieldValidator1 control.
+        /// PasswordRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator PasswordRequiredFieldValidator;
 
         /// <summary>
         /// ChboxStayLoggedIn control.

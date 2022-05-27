@@ -34,6 +34,9 @@ namespace PROG7311_POE_Task_2
             if(user != null)
             {
                 // do auth
+            } else
+            {
+
             }
         }
 
@@ -45,14 +48,20 @@ namespace PROG7311_POE_Task_2
         /// <returns> returns User or null if invalid </returns>
         private User validateUser(String email, String password)
         {
+            this.PasswordRequiredFieldValidator.Text = "";
+            this.UsernameRequiredValidator.Text = "";
+            this.errorMessageBox.Text = "";
+
             // check validity of email
-            if(email.Equals(String.Empty) || email.Equals(null)) {
+            if (email.Equals(String.Empty) || email.Equals(null)) {
                 System.Diagnostics.Trace.WriteLine("[ValidatingUser] validation of email failed.");
+                this.UsernameRequiredValidator.Text = "Email cannot be empty";
                 return null;
             }
             // check validity of password
             if (password.Equals(String.Empty) || password.Equals(null)) {
                 System.Diagnostics.Trace.WriteLine("[ValidatingUser] validation of password failed.");
+                this.PasswordRequiredFieldValidator.Text = "Password cannot be empty";
                 return null;
             }
 
@@ -71,12 +80,16 @@ namespace PROG7311_POE_Task_2
                         else
                         {
                             System.Diagnostics.Trace.WriteLine("[ValidatingUser] Invalid password.");
+                            this.errorMessageBox.Text = "Invalid user and/or password";
+                            this.errorMessageBox.Visible = true;
                             return null;
                         }
                     }
                     else
                     {
                         System.Diagnostics.Trace.WriteLine("[ValidatingUser] Invalid user.");
+                        this.errorMessageBox.Text = "Invalid user and/or password";
+                        this.errorMessageBox.Visible = true;
                         return null;
                     }
                 }
@@ -84,6 +97,7 @@ namespace PROG7311_POE_Task_2
             catch(Exception ex)
             {
                 System.Diagnostics.Trace.WriteLine(ex);
+                this.errorMessageBox.Text = ex.ToString();
                 return null;
             }
         }

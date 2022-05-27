@@ -26,7 +26,7 @@ textarea {
 .container {
     height: 100%;
     width: max-content;
-    padding: 10rem 5rem;
+    padding: 5rem 2.5rem;
     border: 0.5rem solid #eeeeee;
     background: #f7f7f7;
     border-radius: 0.5rem;
@@ -43,26 +43,35 @@ textarea {
     height: 100%;
 }
 
-flex-container.centered, flex-container-vertical.centered {
+.flex-container.centered, .flex-container-vertical.centered {
     justify-content: center;
     align-items: center;
 }
 
-flex-container.spaced-around {
+.flex-container.spaced-around {
     justify-content: space-around;
 }
 
-flex-container-vertical.spaced-around {
-    align-content: space-around;
+.flex-container-vertical.spaced-around {
+    align-items: stretch;
 } 
 
-flex-container.horizontal-center {
+.flex-container.horizontal-center {
     justify-content: center;
+}
+
+.flex-container-vertical.horizontal-center {
+    align-items: center;
 }
 
 .form {
     width: 100%;
     height: 100%;
+}
+
+.form .formField {
+    width: max-content;
+    min-width: 250px;
 }
 
 /* Responsive: Portrait tablets and up */

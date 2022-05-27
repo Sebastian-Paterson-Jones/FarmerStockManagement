@@ -18,21 +18,24 @@
             max-height: 900px;
             min-height: 600px;
             width: 60%;
-            max-width: 600px;
+            max-width: 400px;
             min-width: 300px;
+        }
+        .login .title {
+            text-align: center;
         }
     </style>
 </head>
 <body class="flex-container centered">
     <div class="container login">
-        <h2>Login</h2>
+        <h2 class="title">Login</h2>
         <asp:Label
-            ID="message"
-            ForeColor="Red"
-            runat="server">
-        </asp:Label>
+                ID="errorMessageBox"
+                ForeColor="Red"
+                runat="server">
+            </asp:Label>
         <form id="login" class="form" runat="server">
-            <div class="flex-container-vertical spaced-around">
+            <div class="flex-container-vertical centered">
                 <div class="formField">
                     <label for="UserEmail" class="form-label">Email address</label>
                     <asp:TextBox
@@ -44,7 +47,8 @@
                     <asp:RequiredFieldValidator
                         ID="UsernameRequiredValidator"   
                         ControlToValidate="UserEmail"  
-                        Display="Dynamic"   
+                        Display="Dynamic"
+                        ForeColor="Red"
                         ErrorMessage="Cannot be empty."   
                         runat="server" />
                 </div>
@@ -57,17 +61,19 @@
                         runat="server">
                     </asp:TextBox>
                     <asp:RequiredFieldValidator
-                        ID="RequiredFieldValidator1"   
+                        ID="PasswordRequiredFieldValidator"   
                         ControlToValidate="UserPassword"  
-                        Display="Dynamic"   
+                        Display="Dynamic"
+                        ForeColor="Red"
                         ErrorMessage="Cannot be empty."   
                         runat="server" />
                 </div>
-                <div class="flex-container horizontal-center">
+                <div class="formField flex-container-vertical centered" style="height: max-content; margin-top: 5rem">
                     <asp:Button 
-                        CssClass="btn btn-primary mb-3"
+                        CssClass="btn btn-primary"
                         OnClick="login_click"
                         Text="Log In"
+                        style="width: 100%"
                         runat="server"/>
                     <div class="form-check">
                         <asp:CheckBox
