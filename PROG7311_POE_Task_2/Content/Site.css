@@ -1,7 +1,12 @@
 ﻿/* Move down content because we have a fixed navbar that is 50px tall */
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding: 50px;
 }
 
 /* Wrapping element */
@@ -19,6 +24,8 @@ textarea {
 }
 
 .container {
+    height: 100%;
+    width: max-content;
     padding: 10rem 5rem;
     border: 0.5rem solid #eeeeee;
     background: #f7f7f7;
@@ -27,11 +34,13 @@ textarea {
 
 .flex-container {
     display: flex;
+    height: 100%;
 }
 
 .flex-container-vertical {
     display: flex;
     flex-direction: column;
+    height: 100%;
 }
 
 flex-container.centered, flex-container-vertical.centered {
