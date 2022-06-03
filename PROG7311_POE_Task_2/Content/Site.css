@@ -1,7 +1,12 @@
 ﻿/* Move down content because we have a fixed navbar that is 50px tall */
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
 body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding: 50px;
 }
 
 /* Wrapping element */
@@ -18,6 +23,56 @@ textarea {
     max-width: 280px;
 }
 
+.container {
+    height: 100%;
+    width: max-content;
+    padding: 5rem 2.5rem;
+    border: 0.5rem solid #eeeeee;
+    background: #f7f7f7;
+    border-radius: 0.5rem;
+}
+
+.flex-container {
+    display: flex;
+    height: 100%;
+}
+
+.flex-container-vertical {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.flex-container.centered, .flex-container-vertical.centered {
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-container.spaced-around {
+    justify-content: space-around;
+}
+
+.flex-container-vertical.spaced-around {
+    align-items: stretch;
+} 
+
+.flex-container.horizontal-center {
+    justify-content: center;
+}
+
+.flex-container-vertical.horizontal-center {
+    align-items: center;
+}
+
+.form {
+    width: 100%;
+    height: 100%;
+}
+
+.form .formField {
+    width: max-content;
+    min-width: 250px;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
