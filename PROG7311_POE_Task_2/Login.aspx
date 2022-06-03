@@ -14,6 +14,8 @@
     
     <style>
         .login {
+            display: flex;
+            flex-direction: column;
             height: 70%;
             max-height: 900px;
             min-height: 600px;
@@ -24,16 +26,23 @@
         .login .title {
             text-align: center;
         }
+        .login .messageBox {
+            display: block;
+            margin-top: 5rem;
+            height: 1rem;
+            text-align: center;
+        }
     </style>
 </head>
 <body class="flex-container centered">
     <div class="container login">
         <h2 class="title">Login</h2>
         <asp:Label
-                ID="errorMessageBox"
-                ForeColor="Red"
-                runat="server">
-            </asp:Label>
+            ID="errorMessageBox"
+            ForeColor="Red"
+            CssClass="messageBox"
+            runat="server">
+        </asp:Label>
         <form id="login" class="form" runat="server">
             <div class="flex-container-vertical centered">
                 <div class="formField">

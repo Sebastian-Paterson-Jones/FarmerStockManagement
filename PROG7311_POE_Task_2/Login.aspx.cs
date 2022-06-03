@@ -33,10 +33,27 @@ namespace PROG7311_POE_Task_2
 
             if(user != null)
             {
-                // do auth
-            } else
-            {
+                FormsAuthenticationTicket ticket;
+                string cookiestr;
+                HttpCookie cookie;
+                ticket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now,
+                DateTime.Now.AddMinutes(30), this.ChboxStayLoggedIn.Checked, user.Role);
+                cookiestr = FormsAuthentication.Encrypt(ticket);
+                cookie = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);
+                if (this.ChboxStayLoggedIn.Checked)
+                    cookie.Expires = ticket.Expiration;
+                cookie.Path = FormsAuthentication.FormsCookiePath;
+                Response.Cookies.Add(cookie);
 
+                string strRedirect;
+                strRedirect = Request["ReturnUrl"];
+                if (user.Role == "admin")
+                    strRedirect = "AdminDefault.aspx";
+                else
+                {
+                    strRedirect = "Default.aspx";
+                }
+                Response.Redirect(strRedirect, true);
             }
         }
 
@@ -80,7 +97,7 @@ namespace PROG7311_POE_Task_2
                         else
                         {
                             System.Diagnostics.Trace.WriteLine("[ValidatingUser] Invalid password.");
-                            this.errorMessageBox.Text = "Invalid user and/or password";
+                            this.errorMessageBox.Text = "Invalid email and/or password";
                             this.errorMessageBox.Visible = true;
                             return null;
                         }
@@ -88,7 +105,7 @@ namespace PROG7311_POE_Task_2
                     else
                     {
                         System.Diagnostics.Trace.WriteLine("[ValidatingUser] Invalid user.");
-                        this.errorMessageBox.Text = "Invalid user and/or password";
+                        this.errorMessageBox.Text = "Invalid email and/or password";
                         this.errorMessageBox.Visible = true;
                         return null;
                     }
@@ -104,7 +121,7 @@ namespace PROG7311_POE_Task_2
 
         private bool validPassword(String EnteredPassword, String targetPassword)
         {
-            return (targetPassword == ComputeHash(EnteredPassword));
+            return targetPassword.Trim() == ComputeHash(EnteredPassword);
         }
 
         private string ComputeHash(string password)
