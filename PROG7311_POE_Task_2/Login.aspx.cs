@@ -90,7 +90,8 @@ namespace PROG7311_POE_Task_2
 
                     if(targetUser != null)
                     {
-                        if(validPassword(password, targetUser.Password))
+
+                        if (validPassword(password, targetUser.Password))
                         {
                             return targetUser;
                         }
