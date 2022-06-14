@@ -122,18 +122,7 @@ namespace PROG7311_POE_Task_2
 
         private bool validPassword(String EnteredPassword, String targetPassword)
         {
-            return targetPassword.Trim() == ComputeHash(EnteredPassword);
-        }
-
-        private string ComputeHash(string password)
-        {
-            HashAlgorithm sha256 = SHA256CryptoServiceProvider.Create();
-
-            Byte[] inputBytes = Encoding.UTF8.GetBytes(password);
-
-            Byte[] hashedBytes = sha256.ComputeHash(inputBytes);
-
-            return BitConverter.ToString(hashedBytes);
+            return targetPassword.Trim() == Utils.Auth.ComputeHash(EnteredPassword);
         }
     }
 }

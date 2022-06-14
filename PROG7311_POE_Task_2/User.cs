@@ -26,6 +26,8 @@ namespace PROG7311_POE_Task_2
         public string Email { get; set; }
         public string Password { get; set; }
         public string Role { get; set; }
+        public byte[] image { get; set; }
+        public string imageContentType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Products { get; set; }

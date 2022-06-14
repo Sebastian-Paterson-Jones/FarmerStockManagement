@@ -11,6 +11,13 @@ body {
     padding: 0;
 }
 
+.body-form {
+    display: flex;
+    flex-direction:column;
+    height: 100%;
+    overflow: auto;
+}
+
 .main-body {
     position: relative;
     padding: 25px 50px;
@@ -69,9 +76,15 @@ textarea {
     height: 100%;
 }
 
-.form .formField {
-    width: max-content;
+.formField {
+    margin-top: 15px;
+    width: 80%;
     min-width: 250px;
+    max-width: 500px;
+}
+
+.form-control {
+    max-width: initial;
 }
 
 /* Responsive: Portrait tablets and up */

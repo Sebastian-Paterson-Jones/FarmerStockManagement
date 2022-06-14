@@ -6,6 +6,11 @@
             position: relative;
             padding-top: 50px;
         }
+        .btnAdd {
+            position: absolute;
+            top: 7px;
+            right: 0;
+        }
         .table-container {
             border-radius: 0.5rem;
             border: 1px solid #CDCDCD;
@@ -43,6 +48,7 @@
         
     <h3>This is the title</h3>
     <div class="pager-container">
+        <a class="btnAdd btn btn-primary" href="/AddUser.aspx">Add</a>
         <div class="table-container">
         <asp:GridView ID="FarmerGridView" runat="server" AllowPaging="True" AllowSorting="True" PageSize="4" AutoGenerateColumns="False" DataSourceID="stockManagementDataSource" DataKeyNames="ID"
                 class="table table-striped table-borderless" PagerStyle-CssClass="pager" HeaderStyle-CssClass="header" RowStyle-CssClass="rows">

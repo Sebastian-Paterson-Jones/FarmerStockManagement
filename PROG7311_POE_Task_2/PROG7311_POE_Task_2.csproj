@@ -116,6 +116,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="AddProduct.aspx" />
+    <Content Include="AddUser.aspx" />
     <Content Include="AdminDefault.aspx" />
     <Content Include="App_Data\StockManagement.mdf" />
     <Content Include="App_Data\StockManagement_log.ldf">
@@ -128,28 +130,14 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
-    <Content Include="FarmerStockMangement.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>FarmerStockMangement.Context.cs</LastGenOutput>
-      <DependentUpon>FarmerStockMangement.edmx</DependentUpon>
-    </Content>
-    <Content Include="FarmerStockMangement.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FarmerStockMangement.edmx</DependentUpon>
-      <LastGenOutput>FarmerStockMangement.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="FarmerDetail.aspx" />
-    <EntityDeploy Include="FarmerStockMangement.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FarmerStockMangement.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="FarmerStockMangement.edmx.diagram">
-      <DependentUpon>FarmerStockMangement.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -173,6 +161,11 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Login.aspx" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -273,9 +266,15 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
-    <Content Include="StockManagement.Context.tt">
+    <Content Include="StockManagementEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>StockManagement.Context.cs</LastGenOutput>
+      <DependentUpon>StockManagementEntities.edmx</DependentUpon>
+      <LastGenOutput>StockManagementEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="StockManagementEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>StockManagementEntities.edmx</DependentUpon>
+      <LastGenOutput>StockManagementEntities.cs</LastGenOutput>
     </Content>
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -283,6 +282,20 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AddUser.aspx.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddUser.aspx.designer.cs">
+      <DependentUpon>AddUser.aspx</DependentUpon>
+    </Compile>
     <Compile Include="AdminDefault.aspx.cs">
       <DependentUpon>AdminDefault.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -313,21 +326,6 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FarmerStockMangement.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FarmerStockMangement.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FarmerStockMangement.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FarmerStockMangement.tt</DependentUpon>
-    </Compile>
-    <Compile Include="FarmerStockMangement.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>FarmerStockMangement.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -339,7 +337,7 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>FarmerStockMangement.tt</DependentUpon>
+      <DependentUpon>StockManagementEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
@@ -356,19 +354,25 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="StockManagement.Context.cs">
+    <Compile Include="StockManagementEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StockManagement.Context.tt</DependentUpon>
+      <DependentUpon>StockManagementEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="StockManagement.Designer.cs">
+    <Compile Include="StockManagementEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>StockManagement.edmx</DependentUpon>
+      <DependentUpon>StockManagementEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StockManagementEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StockManagementEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>FarmerStockMangement.tt</DependentUpon>
+      <DependentUpon>StockManagementEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Auth.cs" />
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -392,13 +396,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-    <EntityDeploy Include="StockManagement.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StockManagement.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="StockManagement.edmx.diagram">
-      <DependentUpon>StockManagement.edmx</DependentUpon>
-    </Content>
     <Content Include="Scripts\umd\popper.min.js.map" />
     <Content Include="Scripts\umd\popper.js.map" />
     <Content Include="Scripts\umd\popper.js.flow" />
@@ -409,6 +406,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <EntityDeploy Include="StockManagementEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>StockManagementEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="StockManagementEntities.edmx.diagram">
+      <DependentUpon>StockManagementEntities.edmx</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -418,6 +422,10 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\" />
+    <Folder Include="temp\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
