@@ -6,17 +6,24 @@ html {
 }
 
 body {
-    padding: 50px;
+    height: 100%;
+    width: 100%;
+    padding: 0;
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.body-form {
+    display: flex;
+    flex-direction:column;
+    height: 100%;
+    overflow: auto;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
+.main-body {
+    position: relative;
+    padding: 25px 50px;
+    height: 100%;
+}
+
 input,
 select,
 textarea {
@@ -69,9 +76,15 @@ textarea {
     height: 100%;
 }
 
-.form .formField {
-    width: max-content;
+.formField {
+    margin-top: 15px;
+    width: 80%;
     min-width: 250px;
+    max-width: 500px;
+}
+
+.form-control {
+    max-width: initial;
 }
 
 /* Responsive: Portrait tablets and up */

@@ -16,12 +16,12 @@
         .login {
             display: flex;
             flex-direction: column;
-            height: 70%;
             max-height: 900px;
-            min-height: 600px;
+            min-height: max-content;
             width: 60%;
-            max-width: 400px;
+            max-width: 500px;
             min-width: 300px;
+            overflow-y: auto;
         }
         .login .title {
             text-align: center;

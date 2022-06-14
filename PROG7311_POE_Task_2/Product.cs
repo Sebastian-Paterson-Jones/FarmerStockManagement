@@ -19,6 +19,8 @@ namespace PROG7311_POE_Task_2
         public int Quantity { get; set; }
         public decimal Value { get; set; }
         public int Owner { get; set; }
+        public byte[] Image { get; set; }
+        public string imageContentType { get; set; }
     
         public virtual User User { get; set; }
     }
