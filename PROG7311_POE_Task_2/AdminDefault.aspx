@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminDefault.aspx.cs" Inherits="PROG7311_POE_Task_2.AdminDefault" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+    <script type="text/javascript">
+		function isDelete()
+		{
+			return confirm("Do you want to delete this row ?");
+		}
+    </script>
     <style>
         .pager-container {
             position: relative;
@@ -45,8 +51,7 @@
             vertical-align: middle;
         }
     </style>
-        
-    <h3>This is the title</h3>
+    <h3>Admin</h3>
     <div class="pager-container">
         <a class="btnAdd btn btn-primary" href="/AddUser.aspx">Add</a>
         <div class="table-container">
@@ -60,18 +65,24 @@
                 <asp:HyperLinkField DataNavigateUrlFields="ID" DataNavigateUrlFormatString="FarmerDetail.aspx?id={0}" Text="Select">
                     <ControlStyle CssClass="btn btn-primary"></ControlStyle>
                 </asp:HyperLinkField>
-                <asp:ButtonField ButtonType="Button" CommandName="Delete" Text="Delete" ControlStyle-CssClass="btn btn-danger" />
+                <asp:ButtonField CommandName="Delete" Text="Delete" ControlStyle-CssClass="btn btn-danger" />
             </Columns>
             <HeaderStyle CssClass=”thead-dark” />
-
-<PagerStyle CssClass="pager"></PagerStyle>
-
-<RowStyle CssClass="rows"></RowStyle>
+            <PagerStyle CssClass="pager"></PagerStyle>
+            <RowStyle CssClass="rows"></RowStyle>
         </asp:GridView>
-        <asp:SqlDataSource ID="stockManagementDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:stockManagementDataSource %>" SelectCommand="SELECT [ID], [FirstName], [LastName], [Email] FROM [User] WHERE ([Role] = @Role)">
+        <asp:SqlDataSource 
+            ID="stockManagementDataSource" 
+            runat="server" 
+            ConnectionString="<%$ ConnectionStrings:stockManagementDataSource %>" 
+            SelectCommand="SELECT [ID], [FirstName], [LastName], [Email] FROM [User] WHERE ([Role] = @Role)" 
+            DeleteCommand="DELETE FROM [User] WHERE ID = @ID">
             <SelectParameters>
                 <asp:Parameter DefaultValue="farmer" Name="Role" Type="String" />
             </SelectParameters>
+            <DeleteParameters>
+                <asp:Parameter Name="ID" Type="Int32" />
+            </DeleteParameters>
         </asp:SqlDataSource>
     </div>
     </div>

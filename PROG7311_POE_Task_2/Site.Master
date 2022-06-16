@@ -37,7 +37,6 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-
         <nav class="navbar navbar-light bg-light navbar-fixed-top">
             <div class="nav">
                 <div class="navbar-header">

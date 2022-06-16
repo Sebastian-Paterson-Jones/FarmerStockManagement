@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -46,6 +47,16 @@ namespace PROG7311_POE_Task_2
                         newUser.FirstName = userFirstName;
                         newUser.LastName = userLastName;
                         newUser.Role = userRole;
+
+                        // Save image if uploaded 
+                        if (imageUplodaBox.HasFile && imageUplodaBox.PostedFile != null)
+                        {
+                            byte[] imageBytes;
+                            BinaryReader br = new System.IO.BinaryReader(imageUplodaBox.PostedFile.InputStream);
+                            imageBytes = br.ReadBytes((Int32)imageUplodaBox.PostedFile.InputStream.Length);
+                            newUser.image = imageBytes;
+                            newUser.imageContentType = imageUplodaBox.PostedFile.ContentType;
+                        }
 
                         this.entities.Users.Add(newUser);
                         this.entities.SaveChanges();

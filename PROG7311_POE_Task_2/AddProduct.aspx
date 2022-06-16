@@ -31,6 +31,7 @@
         </asp:Label>
             <div class="flex-container-vertical centered">
                 <div class="formField">
+                    <label for="imageUploadBox" class="form-label">Product Image (Optional)</label>
                     <asp:FileUpload ID="imageUplodaBox" runat="server" accept=".png,.jpg,.jpeg,.gif"/>
                 </div>
                 <div class="formField">

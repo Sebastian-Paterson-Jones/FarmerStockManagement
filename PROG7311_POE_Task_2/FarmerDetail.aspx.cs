@@ -16,6 +16,12 @@ namespace PROG7311_POE_Task_2
         // id of farmer
         int farmerID;
 
+        // default select command of dataSource
+        string selectCommand = "SELECT [Name], [Quantity], [Value], [Image], [imageContentType] FROM [Product] WHERE ([Owner] = @Owner)";
+
+        // sorting command
+        public string sortCommand = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -48,13 +54,7 @@ namespace PROG7311_POE_Task_2
 
         protected void Search_Click(object sender, EventArgs e)
         {
-            string searchString = searchBox.Text;
-
-            using(entities = new StockManagementEntities())
-            {
-                List<Product> list = (List<Product>) entities.Products.Where(prod => DbFunctions.Like(prod.Name, searchString)).ToList();
-                this.FarmerName.Text = list.Count.ToString();
-            }
+            FarmerProductsRepeater.DataBind();
         }
 
         protected void AddNew_Click(object sender, EventArgs e)
@@ -64,22 +64,43 @@ namespace PROG7311_POE_Task_2
 
         protected void filterName_Click(object sender, EventArgs e)
         {
-
+            sortCommand = "ORDER BY [Name] DESC";
+            PriceIcon.Visible = false;
+            QuantityIcon.Visible = false;
+            NameIcon.Visible = true;
+            sortDataSource();
         }
 
         protected void filterPrice_Click(object sender, EventArgs e)
         {
-
+            sortCommand = "ORDER BY [Value] DESC";
+            PriceIcon.Visible = true;
+            QuantityIcon.Visible = false;
+            NameIcon.Visible = false;
+            sortDataSource();
         }
 
         protected void filterQuantity_Click(object sender, EventArgs e)
         {
-
+            sortCommand = "ORDER BY [Quantity] DESC";
+            PriceIcon.Visible = false;
+            QuantityIcon.Visible = true;
+            NameIcon.Visible = false;
+            sortDataSource();
         }
 
         protected string GetImageString64(byte[] Image)
         {
             return Convert.ToBase64String(Image, 0, Image.Length);
+        }
+
+        private void sortDataSource()
+        {
+            string sortedSelect = $"{selectCommand} {sortCommand}";
+            FarmerProductsDataSource.SelectCommand = sortedSelect;
+            FarmerProductsDataSource.Select(DataSourceSelectArguments.Empty);
+            FarmerProductsDataSource.DataBind();
+            FarmerProductsRepeater.DataBind();
         }
     }
 }

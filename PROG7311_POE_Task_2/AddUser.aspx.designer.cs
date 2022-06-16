@@ -24,6 +24,15 @@ namespace PROG7311_POE_Task_2
         protected global::System.Web.UI.WebControls.Label errorMessageBox;
 
         /// <summary>
+        /// imageUplodaBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.FileUpload imageUplodaBox;
+
+        /// <summary>
         /// FirstName control.
         /// </summary>
         /// <remarks>

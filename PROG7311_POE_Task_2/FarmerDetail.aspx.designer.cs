@@ -42,6 +42,15 @@ namespace PROG7311_POE_Task_2
         protected global::System.Web.UI.WebControls.LinkButton filterName;
 
         /// <summary>
+        /// NameIcon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NameIcon;
+
+        /// <summary>
         /// filterQuantity control.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,15 @@ namespace PROG7311_POE_Task_2
         protected global::System.Web.UI.WebControls.LinkButton filterQuantity;
 
         /// <summary>
+        /// QuantityIcon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl QuantityIcon;
+
+        /// <summary>
         /// filterPrice control.
         /// </summary>
         /// <remarks>
@@ -58,6 +76,15 @@ namespace PROG7311_POE_Task_2
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton filterPrice;
+
+        /// <summary>
+        /// PriceIcon control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PriceIcon;
 
         /// <summary>
         /// searchBox control.

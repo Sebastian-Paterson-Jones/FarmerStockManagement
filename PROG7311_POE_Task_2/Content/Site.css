@@ -21,7 +21,7 @@ body {
 .main-body {
     position: relative;
     padding: 25px 50px;
-    height: 100%;
+    height: calc(100% - 60px);
 }
 
 input,

@@ -31,6 +31,10 @@
         </asp:Label>
             <div class="flex-container-vertical centered">
                 <div class="formField">
+                    <label for="imageUploadBox" class="form-label">Ùser Image (Optional)</label>
+                    <asp:FileUpload ID="imageUplodaBox" runat="server" accept=".png,.jpg,.jpeg,.gif"/>
+                </div>
+                <div class="formField">
                     <label for="FirstName" class="form-label">User first name</label>
                     <asp:TextBox
                         AutoCompleteType="FirstName"

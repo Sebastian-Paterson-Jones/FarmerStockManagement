@@ -66,15 +66,15 @@
                 <div class="flex-container">
                     <asp:LinkButton runat="server" OnClick="filterName_Click" ID="filterName" CssClass="filter icon-container">
                         <h5>Name </h5>
-                        <i aria-hidden="true" class="icon fa fa-arrow-up"></i>
+                        <i ID="NameIcon" aria-hidden="true" class="icon fa fa-arrow-down" runat="server"></i>
                     </asp:LinkButton>
                     <asp:LinkButton runat="server" OnClick="filterQuantity_Click" ID="filterQuantity" CssClass="filter icon-container">
                         <h5>Quantity </h5>
-                        <i aria-hidden="true" class="icon fa fa-arrow-up"></i>
+                        <i ID="QuantityIcon" visible="false" aria-hidden="true" class="icon fa fa-arrow-down" runat="server"></i>
                     </asp:LinkButton>
                      <asp:LinkButton runat="server" OnClick="filterPrice_Click" ID="filterPrice" CssClass="filter icon-container">
                          <h5>Price </h5>
-                        <i aria-hidden="true" class="icon fa fa-arrow-up"></i>
+                        <i ID="PriceIcon" visible="false" aria-hidden="true" class="icon fa fa-arrow-down" runat="server"></i>
                      </asp:LinkButton>
                 </div>
             </div>
@@ -111,10 +111,18 @@
                 </div>  
             </ItemTemplate>
     </asp:Repeater>
-    <asp:SqlDataSource ID="FarmerProductsDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:stockManagementDataSource %>" SelectCommand="SELECT [ID], [Name], [Value], [Quantity], [Image] FROM [Product] WHERE ([Owner] = @Owner)">
+    <asp:SqlDataSource 
+        ID="FarmerProductsDataSource" 
+        runat="server"
+        ConnectionString="<%$ ConnectionStrings:stockManagementDataSource %>" 
+        SelectCommand="SELECT [Name], [Quantity], [Value], [Image], [imageContentType] FROM [Product] WHERE ([Owner] = @Owner) ORDER BY [Name] DESC"
+        FilterExpression="Name='{0}'">
         <SelectParameters>
             <asp:QueryStringParameter Name="Owner" QueryStringField="id" Type="Int32" />
         </SelectParameters>
+        <FilterParameters>
+            <asp:ControlParameter Name="Name" ControlID="searchBox" PropertyName="text" />
+        </FilterParameters>
     </asp:SqlDataSource>
     </div>
     </div>
