@@ -16,6 +16,8 @@
           <Property Name="Owner" Type="int" Nullable="false" />
           <Property Name="Image" Type="image" />
           <Property Name="imageContentType" Type="varchar" MaxLength="50" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DateOfEntry" Type="date" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -66,6 +68,8 @@
           <Property Name="Owner" Type="Int32" Nullable="false" />
           <Property Name="Image" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="imageContentType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DateOfEntry" Type="DateTime" Nullable="false" Precision="0" />
           <NavigationProperty Name="User" Relationship="Self.FK_Product_1" FromRole="Product" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
@@ -118,6 +122,8 @@
                 <ScalarProperty Name="Owner" ColumnName="Owner" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="imageContentType" ColumnName="imageContentType" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="DateOfEntry" ColumnName="DateOfEntry" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,6 +14,11 @@ namespace PROG7311_POE_Task_2
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Utils.Auth.getUserCookieData()[1] != "admin")
+            {
+                Response.Redirect("/401");
+            }
+
             // seperate header and body elements on table
             FarmerGridView.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
@@ -29,6 +34,11 @@ namespace PROG7311_POE_Task_2
                 entities.SaveChanges();
                 FarmerGridView.DataBind();
             }
+        }
+
+        protected string GetImageString64(byte[] Image)
+        {
+            return Convert.ToBase64String(Image, 0, Image.Length);
         }
     }
 }

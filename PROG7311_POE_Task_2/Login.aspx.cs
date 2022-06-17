@@ -37,7 +37,7 @@ namespace PROG7311_POE_Task_2
                 string cookiestr;
                 HttpCookie cookie;
                 ticket = new FormsAuthenticationTicket(1, user.Email, DateTime.Now,
-                DateTime.Now.AddMinutes(30), this.ChboxStayLoggedIn.Checked, user.Role);
+                DateTime.Now.AddMinutes(30), this.ChboxStayLoggedIn.Checked, $"{user.ID.ToString()},{user.Role}");
                 cookiestr = FormsAuthentication.Encrypt(ticket);
                 cookie = new HttpCookie(FormsAuthentication.FormsCookieName, cookiestr);
                 if (this.ChboxStayLoggedIn.Checked)

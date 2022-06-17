@@ -17,10 +17,13 @@ namespace PROG7311_POE_Task_2
         int farmerID;
 
         // default select command of dataSource
-        string selectCommand = "SELECT [Name], [Quantity], [Value], [Image], [imageContentType] FROM [Product] WHERE ([Owner] = @Owner)";
+        string selectCommand = "SELECT [ID], [Name], [Quantity], [Value], [Image], [imageContentType], [Type], [DateOfEntry] FROM [Product] WHERE ([Owner] = @Owner)";
 
         // sorting command
         public string sortCommand = "";
+
+        // date command
+        public string dateCommand = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -35,6 +38,15 @@ namespace PROG7311_POE_Task_2
                 Response.Redirect("/404");
             }
 
+            // check authority
+            if (Utils.Auth.getUserCookieData()[1] != "admin")
+            {
+                if (!Utils.Auth.isUserIdAcceptable(farmerID.ToString()))
+                {
+                    Response.Redirect("/401");
+                }
+            }
+
             // fetch farmer data
             try
             {
@@ -44,6 +56,14 @@ namespace PROG7311_POE_Task_2
 
                     FarmerName.Text = $"{farmer.FirstName} {farmer.LastName}";
                     FarmerEmail.Text = $"{farmer.Email}";
+                    if (farmer.image != null)
+                    {
+                        userImage.ImageUrl = $"data:{farmer.imageContentType};base64,{Convert.ToBase64String(farmer.image, 0, farmer.image.Length)}";
+                    }
+                    else
+                    {
+                        userImage.ImageUrl = "https://www.unitedway.ca/wp-content/uploads/2017/06/TempProfile.jpg";
+                    }
                 }
             }
             catch (Exception ex)
@@ -96,11 +116,53 @@ namespace PROG7311_POE_Task_2
 
         private void sortDataSource()
         {
-            string sortedSelect = $"{selectCommand} {sortCommand}";
+            string sortedSelect = $"{selectCommand} {dateCommand} {sortCommand}";
             FarmerProductsDataSource.SelectCommand = sortedSelect;
             FarmerProductsDataSource.Select(DataSourceSelectArguments.Empty);
             FarmerProductsDataSource.DataBind();
             FarmerProductsRepeater.DataBind();
+        }
+
+        protected void BtnEditProduct_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            Response.Redirect($"/EditProduct?farmerID={farmerID}&productID={btn.CommandArgument.ToString()}");
+        }
+
+        protected void BtnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int productID = Convert.ToInt32(btn.CommandArgument);
+            
+            try
+            {
+                using (entities = new StockManagementEntities())
+                {
+                    Product product = entities.Products.Where(item => item.ID == productID).FirstOrDefault();
+                    entities.Products.Remove(product);
+                    entities.SaveChanges();
+                    FarmerProductsRepeater.DataBind();
+                }
+            } catch (Exception err)
+            {
+            }
+        }
+
+        protected void SearchDates_Click(object sender, EventArgs e)
+        {
+            string fromDate = FromDate.Text;
+            string toDate = ToDate.Text;
+
+            if(String.IsNullOrEmpty(fromDate) || String.IsNullOrEmpty(toDate))
+            {
+                dateCommand = "";
+                sortDataSource();
+            } 
+            else
+            {
+                dateCommand = $"AND ([DateOfEntry] BETWEEN '{Convert.ToDateTime(fromDate)}' AND '{Convert.ToDateTime(toDate)}')";
+                sortDataSource();
+            }
         }
     }
 }

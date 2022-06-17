@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a192620545e744baba004ba83c2b2f24" Name="Diagram1" ZoomLevel="92">
+      <Diagram DiagramId="ec9cc5dd306a465bb05276ce7b03f8a8" Name="Diagram1">
         <EntityTypeShape EntityType="StockManagementModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="StockManagementModel.User" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockManagementModel.User" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <AssociationConnector Association="StockManagementModel.FK_Product_1" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

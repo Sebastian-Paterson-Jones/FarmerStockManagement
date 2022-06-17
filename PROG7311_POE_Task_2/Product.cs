@@ -21,6 +21,8 @@ namespace PROG7311_POE_Task_2
         public int Owner { get; set; }
         public byte[] Image { get; set; }
         public string imageContentType { get; set; }
+        public string Type { get; set; }
+        public System.DateTime DateOfEntry { get; set; }
     
         public virtual User User { get; set; }
     }

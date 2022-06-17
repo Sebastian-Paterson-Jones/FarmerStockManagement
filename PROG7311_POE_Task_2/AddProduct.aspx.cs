@@ -35,6 +35,7 @@ namespace PROG7311_POE_Task_2
             errorMessageBox.Text = "";
 
             string productName = this.ProductName.Text;
+            string productType = this.ProductType.Text;
             int produtQuantity;
             decimal productPrice;
             try
@@ -55,35 +56,38 @@ namespace PROG7311_POE_Task_2
                 errorMessageBox.Text = "Please correct the relevant fields";
                 return;
             }
-            //try
-            //{
-            using (entities = new StockManagementEntities())
+            try
             {
-                Product newProduct = new Product();
-                newProduct.Name = productName;
-                newProduct.Quantity = produtQuantity;
-                newProduct.Value = productPrice;
-                newProduct.Owner = farmerID;
-
-                // Save image if uploaded 
-                if (imageUplodaBox.HasFile && imageUplodaBox.PostedFile != null)
+                using (entities = new StockManagementEntities())
                 {
-                    byte[] imageBytes;
-                    BinaryReader br = new System.IO.BinaryReader(imageUplodaBox.PostedFile.InputStream);
-                    imageBytes = br.ReadBytes((Int32)imageUplodaBox.PostedFile.InputStream.Length);
-                    newProduct.Image = imageBytes;
-                    newProduct.imageContentType = imageUplodaBox.PostedFile.ContentType;
+                    Product newProduct = new Product();
+                    newProduct.Name = productName;
+                    newProduct.Type = productType;
+                    newProduct.Quantity = produtQuantity;
+                    newProduct.Value = productPrice;
+                    newProduct.Owner = farmerID;
+                    newProduct.DateOfEntry = DateTime.Now;
+
+                    // Save image if uploaded 
+                    if (imageUplodaBox.HasFile && imageUplodaBox.PostedFile != null)
+                    {
+                        byte[] imageBytes;
+                        BinaryReader br = new System.IO.BinaryReader(imageUplodaBox.PostedFile.InputStream);
+                        imageBytes = br.ReadBytes((Int32)imageUplodaBox.PostedFile.InputStream.Length);
+                        newProduct.Image = imageBytes;
+                        newProduct.imageContentType = imageUplodaBox.PostedFile.ContentType;
+                    }
+
+                    entities.Products.Add(newProduct);
+                    entities.SaveChanges();
+
+                    Response.Redirect($"/FarmerDetail?id={farmerID}");
                 }
-
-                entities.Products.Add(newProduct);
-                entities.SaveChanges();
-
-                Response.Redirect($"/FarmerDetail?id={farmerID}");
+            }
+            catch (Exception err)
+            {
+                errorMessageBox.Text = "An unexpected error occured, please retry";
             }
         }
-        // } catch
-        //{
-        //     errorMessageBox.Text = "An unexpected error occured, please retry";
-        //}
     }
 }

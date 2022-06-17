@@ -17,6 +17,100 @@
     <link href="Content/font-awesome.css" rel="stylesheet" />
 </head>
 <body>
+    <style>
+        .navbar-dark .navbar-brand {
+            color: #fff;
+        }
+        .navbar-brand {
+            display: inline-block;
+            padding-top: 0.3125rem;
+            padding-bottom: 0.3125rem;
+            margin-right: 1rem;
+            font-size: 1.25rem;
+            line-height: inherit;
+            white-space: nowrap;
+        }
+        .right-container {
+            display: flex;
+            align-items: center;
+        }
+        .dropdown-control {
+            position: relative;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .img-profile {
+            height: 30px;
+            width: 30px;
+            border-radius: 100vw;
+        }
+        .lbl-profile {
+            color: white;
+            margin-left: 5px;
+        }
+        .navbar-icon {
+            margin-left: 5px;
+            color: white;
+            transition: transform 0.25s ease-in-out;
+        }
+        .dropdown-control.open .navbar-icon {
+            transform: rotate(180deg);
+        }
+        .dropdown {
+            position:absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 100;
+            width: 100%;
+            height: 0;
+            padding: 0;
+            transform: translate(0, 125%);
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.25s ease-in-out;
+        }
+        .dropdown-btn {
+            display: block;
+            width: 100%;
+            height: 0;
+            padding: 0;
+            border: none;
+            outline: none;
+            background: transparent;
+            opacity: 0;
+            text-align: left;
+        }
+        .dropdown-btn.logout {
+            color: var(--danger);
+        }
+        .dropdown-btn:hover {
+            background: #f1f1f1;
+        }
+        .dropdown-control.open .dropdown {
+            height: max-content;
+            border: 1px solid #808080;
+            opacity: 1;
+        }
+        .dropdown-control.open .dropdown .dropdown-btn {
+            height: 30px;
+            padding: 0 10px;
+            opacity: 1;
+        }
+    </style>
+    <script>
+        let dropdownOpen = false;
+        toggleDropdown = () => {
+            dropdownOpen = !dropdownOpen;
+            let dropdown = document.getElementById("dropdown-control");
+            if (dropdownOpen) {
+                dropdown.classList.add("open");
+            } else {
+                dropdown.classList.remove("open");
+            }
+        }
+    </script>
     <form class="body-form" runat="server">
         <asp:ScriptManager runat="server">
             <Scripts>
@@ -37,18 +131,34 @@
                 <%--Site Scripts--%>
             </Scripts>
         </asp:ScriptManager>
-        <nav class="navbar navbar-light bg-light navbar-fixed-top">
-            <div class="nav">
-                <div class="navbar-header">
-                    <a class="navbar-brand" runat="server" href="~/">Application name</a>
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a runat="server" href="~/">Home</a></li>
-                        <li><a runat="server" href="~/About">About</a></li>
-                        <li><a runat="server" href="~/Contact">Cont</a></li>
-                    </ul>
-                </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">Farmer management</a>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a ID="HomeLink" href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <asp:LinkButton ID="UsersLink" href="/AdminDefault" class="nav-link" runat="server">Users</asp:LinkButton>
+                    </li>
+                    <li class="nav-item">
+                        <asp:LinkButton ID="ProductsLink" OnClick="ProductsLink_Click" class="nav-link" runat="server">Products</asp:LinkButton>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div id="dropdown-control" class="dropdown-control" onclick="toggleDropdown()">
+                        <asp:Image ID="userProfileImage" runat="server" ImageUrl="" CssClass="img-profile" />
+                        <asp:Label ID="userProfileLabel" runat="server" CssClass="lbl-profile" />
+                        <i aria-hidden="true" class="navbar-icon fa fa-arrow-up"></i>
+                        <div class="dropdown">
+                            <asp:Button ID="EditUserBtn" Text="Edit user" OnClick="EditUserBtn_Click" CssClass="dropdown-btn" runat="server" />
+                            <asp:Button ID="BtnLogout" Text="Logout" OnClick="BtnLogout_Click" CssClass="dropdown-btn logout" runat="server" />
+                        </div>
+                    </div>
             </div>
         </nav>
         <div class="main-body">

@@ -8,6 +8,11 @@
 		}
     </script>
     <style>
+        .user-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 100vw;
+        }
         .pager-container {
             position: relative;
             padding-top: 50px;
@@ -52,10 +57,11 @@
         }
     </style>
     <h3>Admin</h3>
+    <h6>Farmer control page</h6>
     <div class="pager-container">
         <a class="btnAdd btn btn-primary" href="/AddUser.aspx">Add</a>
         <div class="table-container">
-        <asp:GridView ID="FarmerGridView" runat="server" AllowPaging="True" AllowSorting="True" PageSize="4" AutoGenerateColumns="False" DataSourceID="stockManagementDataSource" DataKeyNames="ID"
+        <asp:GridView ID="FarmerGridView" runat="server" AllowPaging="True" AllowSorting="True" PageSize="11" AutoGenerateColumns="False" DataSourceID="stockManagementDataSource" DataKeyNames="ID"
                 class="table table-striped table-borderless" PagerStyle-CssClass="pager" HeaderStyle-CssClass="header" RowStyle-CssClass="rows">
             <Columns>
                 <asp:BoundField DataField="ID" HeaderText="#" SortExpression="ID" InsertVisible="False" ReadOnly="True" />
@@ -63,6 +69,9 @@
                 <asp:BoundField DataField="LastName" HeaderText="LastName" SortExpression="LastName" />
                 <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email" />
                 <asp:HyperLinkField DataNavigateUrlFields="ID" DataNavigateUrlFormatString="FarmerDetail.aspx?id={0}" Text="Select">
+                    <ControlStyle CssClass="btn btn-primary"></ControlStyle>
+                </asp:HyperLinkField>
+                <asp:HyperLinkField DataNavigateUrlFields="ID" DataNavigateUrlFormatString="EditUser?id={0}" Text="Edit">
                     <ControlStyle CssClass="btn btn-primary"></ControlStyle>
                 </asp:HyperLinkField>
                 <asp:ButtonField CommandName="Delete" Text="Delete" ControlStyle-CssClass="btn btn-danger" />
@@ -75,7 +84,7 @@
             ID="stockManagementDataSource" 
             runat="server" 
             ConnectionString="<%$ ConnectionStrings:stockManagementDataSource %>" 
-            SelectCommand="SELECT [ID], [FirstName], [LastName], [Email] FROM [User] WHERE ([Role] = @Role)" 
+            SelectCommand="SELECT [ID], [Image], [ImageContentType], [FirstName], [LastName], [Email] FROM [User] WHERE ([Role] = @Role)" 
             DeleteCommand="DELETE FROM [User] WHERE ID = @ID">
             <SelectParameters>
                 <asp:Parameter DefaultValue="farmer" Name="Role" Type="String" />

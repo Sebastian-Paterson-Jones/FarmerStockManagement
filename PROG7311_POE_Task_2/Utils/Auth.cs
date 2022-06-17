@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
+using System.Web.Security;
 
 namespace PROG7311_POE_Task_2.Utils
 {
@@ -55,6 +57,31 @@ namespace PROG7311_POE_Task_2.Utils
                 System.Diagnostics.Trace.WriteLine(e);
                 return false;
             }
+        }
+
+        public static string[] getUserCookieData()
+        {
+            HttpCookie authCookie = System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
+            if (authCookie != null)
+            {
+                if (!string.IsNullOrEmpty(authCookie.Value))
+                {
+                    FormsAuthenticationTicket ticket = FormsAuthentication.Decrypt(authCookie.Value);
+                    return ticket.UserData.Split(',');
+                }
+            }
+            return null;
+        }
+
+        public static bool isUserIdAcceptable(string userID)
+        {
+            String activeUserID = getUserCookieData()[0];
+            return userID == activeUserID;
+        }
+
+        public static void signOut()
+        {
+            FormsAuthentication.SignOut();
         }
     }
 }

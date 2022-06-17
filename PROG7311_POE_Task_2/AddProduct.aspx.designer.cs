@@ -51,6 +51,24 @@ namespace PROG7311_POE_Task_2
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ProductNameRequiredFieldValidator;
 
         /// <summary>
+        /// ProductType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox ProductType;
+
+        /// <summary>
+        /// ProductTypeRequiredFieldValidator control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ProductTypeRequiredFieldValidator;
+
+        /// <summary>
         /// ProductQuantity control.
         /// </summary>
         /// <remarks>
@@ -85,6 +103,15 @@ namespace PROG7311_POE_Task_2
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator ProductValueRequiredValidator;
+
+        /// <summary>
+        /// ValueRegex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ValueRegex;
 
         /// <summary>
         /// btnAddProduct control.

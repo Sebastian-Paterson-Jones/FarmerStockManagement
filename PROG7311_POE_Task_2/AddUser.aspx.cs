@@ -17,6 +17,10 @@ namespace PROG7311_POE_Task_2
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Utils.Auth.getUserCookieData()[1] != "admin")
+            {
+                Response.Redirect("/401");
+            }
         }
 
         protected void btnAddUser_Click(object sender, EventArgs e)

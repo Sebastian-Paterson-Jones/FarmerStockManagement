@@ -11,160 +11,133 @@ namespace PROG7311_POE_Task_2
 {
 
 
-    public partial class WebForm1
+    public partial class EditProduct
     {
 
         /// <summary>
-        /// userImage control.
+        /// errorMessageBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image userImage;
+        protected global::System.Web.UI.WebControls.Label errorMessageBox;
 
         /// <summary>
-        /// FarmerName control.
+        /// productImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FarmerName;
+        protected global::System.Web.UI.WebControls.Image productImage;
 
         /// <summary>
-        /// FarmerEmail control.
+        /// imageUplodaBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FarmerEmail;
+        protected global::System.Web.UI.WebControls.FileUpload imageUplodaBox;
 
         /// <summary>
-        /// filterName control.
+        /// ProductName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton filterName;
+        protected global::System.Web.UI.WebControls.TextBox ProductName;
 
         /// <summary>
-        /// NameIcon control.
+        /// ProductNameRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl NameIcon;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ProductNameRequiredFieldValidator;
 
         /// <summary>
-        /// filterQuantity control.
+        /// ProductType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton filterQuantity;
+        protected global::System.Web.UI.WebControls.TextBox ProductType;
 
         /// <summary>
-        /// QuantityIcon control.
+        /// ProductTypeRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl QuantityIcon;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ProductTypeRequiredFieldValidator;
 
         /// <summary>
-        /// filterPrice control.
+        /// ProductQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton filterPrice;
+        protected global::System.Web.UI.WebControls.TextBox ProductQuantity;
 
         /// <summary>
-        /// PriceIcon control.
+        /// ProductQuantityRequiredFieldValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PriceIcon;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ProductQuantityRequiredFieldValidator;
 
         /// <summary>
-        /// FromDate control.
+        /// ProductValue control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox FromDate;
+        protected global::System.Web.UI.WebControls.TextBox ProductValue;
 
         /// <summary>
-        /// ToDate control.
+        /// ProductValueRequiredValidator control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox ToDate;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator ProductValueRequiredValidator;
 
         /// <summary>
-        /// SearchDates control.
+        /// ValueRegex control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button SearchDates;
+        protected global::System.Web.UI.WebControls.RegularExpressionValidator ValueRegex;
 
         /// <summary>
-        /// searchBox control.
+        /// btnUpdateProduct control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox searchBox;
+        protected global::System.Web.UI.WebControls.Button btnUpdateProduct;
 
         /// <summary>
-        /// btnSearch control.
+        /// btnCancel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
-
-        /// <summary>
-        /// AddNew control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddNew;
-
-        /// <summary>
-        /// FarmerProductsRepeater control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater FarmerProductsRepeater;
-
-        /// <summary>
-        /// FarmerProductsDataSource control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource FarmerProductsDataSource;
+        protected global::System.Web.UI.WebControls.Button btnCancel;
     }
 }
