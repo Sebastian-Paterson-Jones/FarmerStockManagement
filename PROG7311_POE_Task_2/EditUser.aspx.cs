@@ -86,6 +86,11 @@ namespace PROG7311_POE_Task_2
             }
         }
 
+        /// <summary>
+        /// update user in database
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void btnUpdateUser_Click(object sender, EventArgs e)
         {
             // reset error message box
@@ -142,6 +147,11 @@ namespace PROG7311_POE_Task_2
             }
         }
 
+        /// <summary>
+        /// Cancel edit user form and return
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect(prevPage);

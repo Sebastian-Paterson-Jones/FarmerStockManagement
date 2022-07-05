@@ -13,6 +13,11 @@ namespace PROG7311_POE_Task_2.Utils
 {
     public class Auth
     {
+        /// <summary>
+        /// Computes a hash for authentication purposes
+        /// </summary>
+        /// <param name="password">password of user</param>
+        /// <returns>computed hash from password</returns>
         public static string ComputeHash(string password)
         {
             HashAlgorithm sha256 = SHA256CryptoServiceProvider.Create();
@@ -24,6 +29,11 @@ namespace PROG7311_POE_Task_2.Utils
             return BitConverter.ToString(hashedBytes);
         }
 
+        /// <summary>
+        /// Validates if email is in email format
+        /// </summary>
+        /// <param name="email">email</param>
+        /// <returns>boolean. true if valid email, false if not</returns>
         public static bool IsValidEmail(string email)
         {
             try
@@ -59,6 +69,10 @@ namespace PROG7311_POE_Task_2.Utils
             }
         }
 
+        /// <summary>
+        /// get user authentication cookie
+        /// </summary>
+        /// <returns>String of values presenet in authentication cookie</returns>
         public static string[] getUserCookieData()
         {
             HttpCookie authCookie = System.Web.HttpContext.Current.Request.Cookies[FormsAuthentication.FormsCookieName];
@@ -73,12 +87,20 @@ namespace PROG7311_POE_Task_2.Utils
             return null;
         }
 
+        /// <summary>
+        /// Check if user Id is current user
+        /// </summary>
+        /// <param name="userID">users UUID</param>
+        /// <returns>boolean. true if userID is current user</returns>
         public static bool isUserIdAcceptable(string userID)
         {
             String activeUserID = getUserCookieData()[0];
             return userID == activeUserID;
         }
 
+        /// <summary>
+        /// Log the user out
+        /// </summary>
         public static void signOut()
         {
             FormsAuthentication.SignOut();

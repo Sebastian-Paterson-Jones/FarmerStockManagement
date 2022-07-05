@@ -30,6 +30,11 @@ namespace PROG7311_POE_Task_2
             }
         }
 
+        /// <summary>
+        /// add product to database
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void btnAddProduct_Click(object sender, EventArgs e)
         {
             errorMessageBox.Text = "";

@@ -22,7 +22,12 @@ namespace PROG7311_POE_Task_2
                 Response.Redirect("/401");
             }
         }
-
+        
+        /// <summary>
+        /// add user to database
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void btnAddUser_Click(object sender, EventArgs e)
         {
             // reset error message box

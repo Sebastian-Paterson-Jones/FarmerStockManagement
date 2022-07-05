@@ -72,16 +72,31 @@ namespace PROG7311_POE_Task_2
             }
         }
 
+        /// <summary>
+        /// Search products
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void Search_Click(object sender, EventArgs e)
         {
             FarmerProductsRepeater.DataBind();
         }
 
+        /// <summary>
+        /// redirect to add product
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void AddNew_Click(object sender, EventArgs e)
         {
             Response.Redirect($"AddProduct?id={farmerID}");
         }
 
+        /// <summary>
+        /// Filter products by name
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void filterName_Click(object sender, EventArgs e)
         {
             sortCommand = "ORDER BY [Name] DESC";
@@ -91,6 +106,11 @@ namespace PROG7311_POE_Task_2
             sortDataSource();
         }
 
+        /// <summary>
+        /// Filter products by price
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void filterPrice_Click(object sender, EventArgs e)
         {
             sortCommand = "ORDER BY [Value] DESC";
@@ -100,6 +120,11 @@ namespace PROG7311_POE_Task_2
             sortDataSource();
         }
 
+        /// <summary>
+        /// filter product by quantity
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void filterQuantity_Click(object sender, EventArgs e)
         {
             sortCommand = "ORDER BY [Quantity] DESC";
@@ -109,11 +134,19 @@ namespace PROG7311_POE_Task_2
             sortDataSource();
         }
 
+        /// <summary>
+        /// convert byte array to base 64 strings
+        /// </summary>
+        /// <param name="Image">byte array</param>
+        /// <returns>base 64 image string</returns>
         protected string GetImageString64(byte[] Image)
         {
             return Convert.ToBase64String(Image, 0, Image.Length);
         }
 
+        /// <summary>
+        /// sort product list items
+        /// </summary>
         private void sortDataSource()
         {
             string sortedSelect = $"{selectCommand} {dateCommand} {sortCommand}";
@@ -121,6 +154,64 @@ namespace PROG7311_POE_Task_2
             FarmerProductsDataSource.Select(DataSourceSelectArguments.Empty);
             FarmerProductsDataSource.DataBind();
             FarmerProductsRepeater.DataBind();
+        }
+
+        /// <summary>
+        /// redirect to edit product
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
+        protected void BtnEditProduct_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            Response.Redirect($"/EditProduct?farmerID={farmerID}&productID={btn.CommandArgument.ToString()}");
+        }
+
+        /// <summary>
+        /// Redirect to product item delete
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
+        protected void BtnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            LinkButton btn = (LinkButton)sender;
+            int productID = Convert.ToInt32(btn.CommandArgument);
+            
+            try
+            {
+                using (entities = new StockManagementEntities())
+                {
+                    Product product = entities.Products.Where(item => item.ID == productID).FirstOrDefault();
+                    entities.Products.Remove(product);
+                    entities.SaveChanges();
+                    FarmerProductsRepeater.DataBind();
+                }
+            } catch (Exception err)
+            {
+            }
+        }
+
+        /// <summary>
+        /// List product by date
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
+        protected void SearchDates_Click(object sender, EventArgs e)
+        {
+            string fromDate = FromDate.Text;
+            string toDate = ToDate.Text;
+
+            if(String.IsNullOrEmpty(fromDate) || String.IsNullOrEmpty(toDate))
+            {
+                dateCommand = "";
+                sortDataSource();
+            } 
+            else
+            {
+                dateCommand = $"AND ([DateOfEntry] BETWEEN '{Convert.ToDateTime(fromDate)}' AND '{Convert.ToDateTime(toDate)}')";
+                sortDataSource();
+            }
+        }
         }
 
         protected void BtnEditProduct_Click(object sender, EventArgs e)

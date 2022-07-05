@@ -27,6 +27,11 @@ namespace PROG7311_POE_Task_2
             this.passwordBox = this.UserPassword;
         }
 
+        /// <summary>
+        /// Log user in
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void login_click(Object sender, EventArgs e)
         {
             User user = validateUser(this.emailBox.Text, this.passwordBox.Text);
@@ -120,6 +125,12 @@ namespace PROG7311_POE_Task_2
             }
         }
 
+        /// <summary>
+        /// check if passwoed is valid
+        /// </summary>
+        /// <param name="EnteredPassword">password entered</param>
+        /// <param name="targetPassword">target users password</param>
+        /// <returns>boolean. true if password match, false otherwise</returns>
         private bool validPassword(String EnteredPassword, String targetPassword)
         {
             return targetPassword.Trim() == Utils.Auth.ComputeHash(EnteredPassword);

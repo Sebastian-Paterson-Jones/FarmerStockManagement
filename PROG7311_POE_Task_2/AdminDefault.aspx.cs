@@ -23,6 +23,11 @@ namespace PROG7311_POE_Task_2
             FarmerGridView.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
 
+        /// <summary>
+        /// delete user from database
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void FarmerGridView_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             int userID = Convert.ToInt32(FarmerGridView.Rows[e.RowIndex].Cells[0].Text);
@@ -36,6 +41,11 @@ namespace PROG7311_POE_Task_2
             }
         }
 
+        /// <summary>
+        /// convert byte array to base 64 string
+        /// </summary>
+        /// <param name="Image">image byte array</param>
+        /// <returns>base 64 image</returns>
         protected string GetImageString64(byte[] Image)
         {
             return Convert.ToBase64String(Image, 0, Image.Length);

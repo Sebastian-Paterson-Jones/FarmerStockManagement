@@ -91,6 +91,11 @@ namespace PROG7311_POE_Task_2
             }
         }
 
+        /// <summary>
+        /// update product in database
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void btnUpdateProduct_Click(object sender, EventArgs e)
         {
             errorMessageBox.Text = "";
@@ -149,7 +154,11 @@ namespace PROG7311_POE_Task_2
                 errorMessageBox.Text = "An unexpected error occured, please retry";
             }
 }
-
+        /// <summary>
+        /// Cancel edit product and redurect back
+        /// </summary>
+        /// <param name="sender">button</param>
+        /// <param name="e">event arguments</param>
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             Response.Redirect(prevPage);

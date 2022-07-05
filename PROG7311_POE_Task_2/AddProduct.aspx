@@ -96,7 +96,7 @@
                         ForeColor="Red"
                         ErrorMessage="Cannot be empty."   
                         runat="server" />
-                    <asp:RegularExpressionValidator runat="server" ErrorMessage="Value must be a comma seperated decimal" ID="ValueRegex"
+                    <asp:RegularExpressionValidator runat="server" ErrorMessage="Value must be a decimal" ID="ValueRegex"
                        ForeColor="Red" ControlToValidate="ProductValue"              
                        ValidationExpression="^\d+\,\d{0,2}$"></asp:RegularExpressionValidator>
                 </div>
